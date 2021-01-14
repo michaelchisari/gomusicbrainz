@@ -80,8 +80,6 @@ import (
 	"path"
 	"strconv"
 	"strings"
-
-	"github.com/davecgh/go-spew/spew"
 )
 
 // NewWS2Client returns a new instance of WS2Client. Please provide meaningful
@@ -148,9 +146,6 @@ func (c *WS2Client) getRequest(data interface{}, params url.Values, endpoint str
 		return err
 	}
 	defer resp.Body.Close()
-
-	fmt.Println(reqUrl.String())
-	spew.Dump(resp.Body)
 
 	decoder := xml.NewDecoder(resp.Body)
 

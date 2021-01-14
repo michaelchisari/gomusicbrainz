@@ -27,7 +27,6 @@ package gomusicbrainz
 
 import (
 	"encoding/xml"
-	"fmt"
 )
 
 type Recording struct {
@@ -36,7 +35,7 @@ type Recording struct {
 	Length         int          `xml:"length"`
 	Disambiguation string       `xml:"disambiguation"`
 	ArtistCredit   ArtistCredit `xml:"artist-credit"`
-	Releases       []Release    `xms:"releases"`
+	Releases       []Release    `xml:"releases"`
 
 	// TODO add refs
 }
@@ -60,7 +59,6 @@ func (mbe *Recording) Id() MBID {
 
 // LookupRecording performs an recording lookup request for the given MBID.
 func (c *WS2Client) LookupRecording(id MBID, inc ...string) (*Recording, error) {
-	fmt.Println("LookupRecordin")
 	a := &Recording{ID: id}
 	err := c.Lookup(a, inc...)
 
