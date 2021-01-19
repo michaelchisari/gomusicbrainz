@@ -189,6 +189,7 @@ type RelationAbstract struct {
 	Ended       bool                 `xml:"ended"`
 	Attributes  []*AttributeAbstract `xml:"attribute-list>attribute"`
 	Artists     []*Artist            `xml:"artist"`
+	Place       []*Place             `xml:"place"`
 }
 
 type AttributeAbstract struct {
