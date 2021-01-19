@@ -192,7 +192,7 @@ type RelationAbstract struct {
 
 type AttributeAbstract struct {
 	TypeID    MBID   `xml:"type-id,attr"`
-	Attribute string `xml:"attribute"`
+	Attribute string `xml:",innerxml"`
 }
 
 func (r *RelationAbstract) TypeOf() string {
