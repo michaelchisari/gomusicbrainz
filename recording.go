@@ -30,13 +30,13 @@ import (
 )
 
 type Recording struct {
-	ID             MBID         `xml:"id,attr"`
-	Title          string       `xml:"title"`
-	Length         int          `xml:"length"`
-	Disambiguation string       `xml:"disambiguation"`
-	ArtistCredit   ArtistCredit `xml:"artist-credit"`
-	Releases       []*Release   `xml:"release-list>release"` // FIXME if important unmarshal count,attr
-	Relations      []*Relation  `xml:"relation-list>relation"`
+	ID             MBID                `xml:"id,attr"`
+	Title          string              `xml:"title"`
+	Length         int                 `xml:"length"`
+	Disambiguation string              `xml:"disambiguation"`
+	ArtistCredit   ArtistCredit        `xml:"artist-credit"`
+	Releases       []*Release          `xml:"release-list>release"` // FIXME if important unmarshal count,attr
+	Relations      []*RelationAbstract `xml:"relation-list>relation"`
 
 	// TODO add refs
 }
