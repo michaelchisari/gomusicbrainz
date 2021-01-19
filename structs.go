@@ -188,7 +188,7 @@ type RelationAbstract struct {
 	End         BrainzTime           `xml:"end"`
 	Ended       bool                 `xml:"ended"`
 	Attributes  []*AttributeAbstract `xml:"attribute-list>attribute"`
-	Artists     []*ArtistRelation    `xml:"artist"`
+	Artists     []*Artist            `xml:"artist"`
 }
 
 type AttributeAbstract struct {
