@@ -36,6 +36,7 @@ type Recording struct {
 	Disambiguation string       `xml:"disambiguation"`
 	ArtistCredit   ArtistCredit `xml:"artist-credit"`
 	Releases       []*Release   `xml:"release-list>release"` // FIXME if important unmarshal count,attr
+	Relations      []*Relation  `xml:"relation-list>relation"`
 
 	// TODO add refs
 }
