@@ -178,15 +178,21 @@ type Relation interface {
 
 // RelationAbstract is the common abstract type for Relations.
 type RelationAbstract struct {
-	Type        string     `xml:"type,attr"`
-	TypeID      MBID       `xml:"type-id,attr"`
-	Target      string     `xml:"target"`
-	TargetID    MBID       `xml:"target-id,attr"`
-	OrderingKey int        `xml:"ordering-key"`
-	Direction   string     `xml:"direction"`
-	Begin       BrainzTime `xml:"begin"`
-	End         BrainzTime `xml:"end"`
-	Ended       bool       `xml:"ended"`
+	Type        string               `xml:"type,attr"`
+	TypeID      MBID                 `xml:"type-id,attr"`
+	Target      string               `xml:"target"`
+	TargetID    MBID                 `xml:"target-id,attr"`
+	OrderingKey int                  `xml:"ordering-key"`
+	Direction   string               `xml:"direction"`
+	Begin       BrainzTime           `xml:"begin"`
+	End         BrainzTime           `xml:"end"`
+	Ended       bool                 `xml:"ended"`
+	Attributes  []*AttributeAbstract `xml:"attribute-list>attribute"`
+}
+
+type AttributeAbstract struct {
+	TypeID    MBID   `xml:"type-id,attr"`
+	Attribute string `xml:"attribute"`
 }
 
 func (r *RelationAbstract) TypeOf() string {
