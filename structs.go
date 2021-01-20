@@ -174,6 +174,7 @@ type NameCredit struct {
 // relationships.
 type Relation interface {
 	TypeOf() string
+	TargetVal() string
 }
 
 // RelationAbstract is the common abstract type for Relations.
@@ -200,6 +201,10 @@ type AttributeAbstract struct {
 
 func (r *RelationAbstract) TypeOf() string {
 	return r.Type
+}
+
+func (r *RelationAbstract) TargetVal() string {
+	return r.Target
 }
 
 // RelationsOfTypes returns a slice of Relations for the given relTypes. For a
