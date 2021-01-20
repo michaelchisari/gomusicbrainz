@@ -25,11 +25,39 @@
 
 package gomusicbrainz
 
+import "encoding/xml"
+
 type Work struct {
-	ID     MBID   `xml:"id,attr"`
-	Type   string `xml:"type,attr"`
-	TypeID MBID   `xml:"type-id,attr"`
-	Title  string `xml:"title"`
+	ID        MBID                `xml:"id,attr"`
+	Type      string              `xml:"type,attr"`
+	TypeID    MBID                `xml:"type-id,attr"`
+	Title     string              `xml:"title"`
+	Relations []*RelationAbstract `xml:"relation-list>relation"`
+}
+
+func (mbe *Work) lookupResult() interface{} {
+	var res struct {
+		XMLName xml.Name `xml:"metadata"`
+		Ptr     *Work    `xml:"work"`
+	}
+	res.Ptr = mbe
+	return &res
+}
+
+func (mbe *Work) apiEndpoint() string {
+	return "/recording"
+}
+
+func (mbe *Work) Id() MBID {
+	return mbe.ID
+}
+
+// LookupRecording performs an recording lookup request for the given MBID.
+func (c *WS2Client) LookupWork(id MBID, inc ...string) (*Work, error) {
+	a := &Work{ID: id}
+	err := c.Lookup(a, inc...)
+
+	return a, err
 }
 
 func (c *WS2Client) SearchWork(searchTerm string, limit, offset int) (*WorkSearchResponse, error) {
