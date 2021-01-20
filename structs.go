@@ -190,6 +190,7 @@ type RelationAbstract struct {
 	Attributes  []*AttributeAbstract `xml:"attribute-list>attribute"`
 	Artists     []*Artist            `xml:"artist"`
 	Place       []*Place             `xml:"place"`
+	Work        []*Work              `xml:"work"`
 }
 
 type AttributeAbstract struct {

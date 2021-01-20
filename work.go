@@ -26,7 +26,10 @@
 package gomusicbrainz
 
 type Work struct {
-	//TODO implement
+	ID     MBID   `xml:"id,attr"`
+	Type   string `xml:"type,attr"`
+	TypeID MBID   `xml:"type-id,attr"`
+	Title  string `xml:"title"`
 }
 
 func (c *WS2Client) SearchWork(searchTerm string, limit, offset int) (*WorkSearchResponse, error) {
