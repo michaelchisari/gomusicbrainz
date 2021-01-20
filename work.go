@@ -45,7 +45,7 @@ func (mbe *Work) lookupResult() interface{} {
 }
 
 func (mbe *Work) apiEndpoint() string {
-	return "/recording"
+	return "/work"
 }
 
 func (mbe *Work) Id() MBID {
